@@ -1,0 +1,20 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:base"
+    ],
+    "registryAliases": {
+        "$CI_SERVER_URL": "https://gitlab.com",
+        "https://$CI_SERVER_HOST": "https://gitlab.com"
+    },
+    "customManagers": [
+        {
+          "customType": "regex",
+          "fileMatch": [".*\\.gitlab-ci\\.yml$"],
+          "matchStrings": [
+            "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?) (versioning=(?<versioning>.*?))? (registryUrl=(?<registryUrl>.*?))?\\s*_VERSION:\\s*(?<currentValue>.*)\\s*"
+          ],
+          "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+        }
+    ]
+}
