@@ -12,7 +12,7 @@
           "customType": "regex",
           "fileMatch": [".*\\.gitlab-ci\\.yml$"],
           "matchStrings": [
-            "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?) (versioning=(?<versioning>.*?))? (registryUrl=(?<registryUrl>.*?))?\\s*_VERSION:\\s*(?<currentValue>.*)\\s*"
+            "datasource=(?<datasource>.*?) depName=(?<depName>.*?) (versioning=(?<versioning>.*?))? (registryUrl=(?<registryUrl>.*?))?\\s.*?_VERSION:\\s*\"(?<currentValue>.*)\"\\s"
           ],
           "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
         }
